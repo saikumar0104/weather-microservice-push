@@ -7,7 +7,7 @@ data "aws_caller_identity" "current" {}
 
 # ✅ ECS Cluster
 resource "aws_ecs_cluster" "weather_cluster" {
-  name = "weather-cluster"
+  name = "weather-cluster-push"
 }
 # ✅ Security Group for ECS Tasks
 resource "aws_security_group" "ecs_sg" {
