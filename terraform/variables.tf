@@ -39,6 +39,11 @@ variable "spring_datasource_password" {
   sensitive   = true
 }
 
+variable "pushgateway_url" {
+  description = "Pushgateway URL for metrics"
+  type        = string
+}
+
 #if incase u wanna keep clean use this
 #variable "spring_datasource_url" {}
 #variable "spring_datasource_username" {}
