@@ -1,0 +1,41 @@
+name: Deploy to Amazon ECS (PUSH Service)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️ Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️ Set up Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.2
+
+      # 3️ Configure AWS Credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      # 4️ Initialize Terraform
+      - name: Terraform Init
+        working-directory: ./terraform
+        run: terraform init
+
+      # 5️ Terraform Apply
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: |
+          terraform apply -auto-approve \
+            -var="spring_datasource_url=${{ secrets.POSTGRES_URL }}" \
+            -var="spring_datasource_username=${{ secrets.POSTGRES_USER }}" \
+            -var="spring_datasource_password=${{ secrets.POSTGRES_PASSWORD }}"
