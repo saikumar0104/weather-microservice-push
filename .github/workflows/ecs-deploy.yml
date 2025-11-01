@@ -45,4 +45,4 @@ jobs:
             -var="spring_datasource_url=${{ secrets.POSTGRES_URL }}" \
             -var="spring_datasource_username=${{ secrets.POSTGRES_USER }}" \
             -var="spring_datasource_password=${{ secrets.POSTGRES_PASSWORD }}"
-            -var="pushgateway.url=${{ secrets.PUSHGATEWAY_URL }}"
+            -var="pushgateway_url=${{ secrets.PUSHGATEWAY_URL }}"
