@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Confirm manual trigger
+        run: echo "Manual debug workflow triggered!"
+
       # 1️ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
