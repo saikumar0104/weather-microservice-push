@@ -3,7 +3,7 @@ output "ecs_cluster_name" {
 }
 
 output "ecs_service_name" {
-  value = aws_ecs_service.weather_service.name
+  value = aws_ecs_service.weather_push_service.name
 }
 
 output "security_group_id" {
