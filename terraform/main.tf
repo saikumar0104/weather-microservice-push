@@ -73,11 +73,11 @@ resource "aws_ecs_task_definition" "weather_push_task" {
         }
       ]
       environment = [
-        { name = "SPRING_DATASOURCE_URL", value = var.spring_datasource_url },
-        { name = "SPRING_DATASOURCE_USERNAME", value = var.spring_datasource_username },
-        { name = "SPRING_DATASOURCE_PASSWORD", value = var.spring_datasource_password },
-        { name = "PUSHGATEWAY_URL", value = var.pushgateway_url }
-      ]
+        { name = "POSTGRES_URL", value = var.spring_datasource_url },
+        { name = "POSTGRES_USER", value = var.spring_datasource_username },
+        { name = "POSTGRES_PASSWORD", value = var.spring_datasource_password },
+        { name = "PUSHGATEWAY_URL", value = var.pushgateway_url }      
+]
       logConfiguration = {
         logDriver = "awslogs"
         options = {
