@@ -11,7 +11,7 @@ resource "aws_ecs_cluster" "weather_cluster" {
 }
 # ✅ Security Group for ECS Tasks
 resource "aws_security_group" "ecs_sg" {
-  name        = "ecs-weather-sg"
+  name        = "ecs-weather-push-sg"
   description = "Allow inbound traffic for Weather Microservice"
   vpc_id      = var.vpc_id
 
